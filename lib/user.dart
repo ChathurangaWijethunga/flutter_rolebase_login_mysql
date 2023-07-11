@@ -17,11 +17,26 @@ class _UserState extends State<User> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("User Profile"),
-        
       ),
       drawer: AppDrawer(username: widget.username), // Added line
-      body: const Center(
-        
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text("User profile"),
+            const SizedBox(height: 20),
+            Text("Welcome: ${widget.username}"),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Login()),
+                );
+              },
+              child: const Text("Logout"),
+            ),
+          ],
+        ),
       ),
     );
   }
